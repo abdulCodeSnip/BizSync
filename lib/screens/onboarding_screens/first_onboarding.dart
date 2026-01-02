@@ -2,74 +2,104 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import "dart:math" as math;
 
+import 'package:whatsapp_automation/utils/AppColors.dart';
+
 class FirstOnboarding extends StatelessWidget {
   const FirstOnboarding({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        // Main Icon to contain other Icons
-        Positioned.fill(
-          child: Icon(
-            CupertinoIcons.chat_bubble,
-            size: 120,
-            color: Colors.blue,
-          ),
-        ),
+    return Container(
+      height: MediaQuery.of(context).size.height,
+      width: MediaQuery.of(context).size.width,
+      padding: EdgeInsets.all(10),
 
-        // icon inside the main icon to show more creative styling
-        Positioned(
-          top: MediaQuery.of(context).size.height / 2 - 140,
-          right: MediaQuery.of(context).size.width / 2 - 50,
-          child: Transform.rotate(
-            angle: 17 * (math.pi / 180),
-            child: Icon(Icons.bolt_rounded, size: 80, color: Colors.blue),
-          ),
-        ),
-
-        // Title and a small description of application
-        Positioned(
-          bottom: 50,
-          left: 0,
-          right: 0,
-          child: Align(
-            alignment: Alignment.bottomCenter,
+      margin: EdgeInsets.only(bottom: 40),
+      child: Stack(
+        children: [
+          // Centered Circle to hold other child icons
+          Center(
             child: Container(
-              padding: EdgeInsets.all(10),
-              width: MediaQuery.of(context).size.width - 40,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                mainAxisSize: MainAxisSize.max,
-                spacing: 10,
-                children: [
-                  // Title of Onboarding Screen
-                  const Text(
-                    "Auto Reply to Customers",
-                    style: TextStyle(
-                      fontSize: 32,
-                      fontWeight: FontWeight.w600,
-                      fontFamily: "PoppinsBold",
-                    ),
-                    textAlign: TextAlign.center,
-                  ),
-
-                  // A Small description of first onboarding
-                  const Text(
-                    "Never miss a message. Your WhatsApp replies automatically, 24/7.",
-                    style: TextStyle(
-                      fontFamily: "poppins",
-                      fontSize: 18,
-                      fontWeight: FontWeight.w400,
-                    ),
-                    textAlign: TextAlign.center,
+              height: 200,
+              width: 200,
+              decoration: BoxDecoration(
+                color: Appcolors.parentBodyBGColor,
+                borderRadius: BorderRadius.circular(100),
+                boxShadow: [
+                  BoxShadow(
+                    color: Appcolors.parentBodyBGColor,
+                    offset: Offset(1, 3),
+                    blurRadius: 12,
+                    spreadRadius: 4,
                   ),
                 ],
               ),
             ),
           ),
-        ),
-      ],
+          // Chat Icon that is a parent icon to hold the "bolt" icon
+          Positioned.fill(
+            child: Center(
+              child: Icon(
+                CupertinoIcons.chat_bubble_fill,
+                size: 130,
+                color: const Color(0xFF003C7B),
+              ),
+            ),
+          ),
+
+          // Flash Icon inside the icon and circle to attract eye
+          Positioned.fill(
+            child: Transform.rotate(
+              angle: 14.5 * (math.pi / 100),
+              child: Icon(Icons.bolt, size: 185, color: Color(0xFF86E2FF)),
+            ),
+          ),
+
+          // Title and a small description of application
+          Positioned(
+            bottom: 70,
+            left: 0,
+            right: 0,
+            child: Align(
+              alignment: Alignment.bottomCenter,
+              child: Container(
+                padding: EdgeInsets.all(8),
+                width: MediaQuery.of(context).size.width - 40,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.max,
+                  spacing: 10,
+                  children: [
+                    // Title of Onboarding Screen
+                    const Text(
+                      "Automate WhatsApp Conversations",
+                      style: TextStyle(
+                        fontSize: 28,
+                        fontWeight: FontWeight.w600,
+                        fontFamily: "PoppinsBold",
+                        color: Appcolors.headingTextColor,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+
+                    // A Small description of first onboarding
+                    const Text(
+                      "Respond instantly to customers, even when you're offline.",
+                      style: TextStyle(
+                        fontFamily: "poppins",
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400,
+                        color: Appcolors.bodyTextColor,
+                      ),
+                      textAlign: TextAlign.center,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:whatsapp_automation/states/application_state.dart';
+import 'package:whatsapp_automation/utils/AppColors.dart';
 
 class Custombutton extends StatelessWidget {
   final String buttonTitle;
@@ -19,13 +20,14 @@ class Custombutton extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.all(10),
       child: SizedBox(
-        width: double.infinity,
+        width: MediaQuery.of(context).size.width - 30,
         height: 50,
         child: ElevatedButton(
           // Increment the index and then move to the next screen
           onPressed: () => {appState.incrementOnboardingScreenIndex()},
-          style: ButtonStyle(
-            backgroundColor: WidgetStateProperty.all(Colors.blueAccent),
+          style: ElevatedButton.styleFrom(
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+            backgroundColor: Appcolors.iconsAndBtnsColor
           ),
           child: Text(
             buttonTitle,

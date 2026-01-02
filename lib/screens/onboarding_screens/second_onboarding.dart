@@ -1,142 +1,111 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:icons_plus/icons_plus.dart';
-import 'package:whatsapp_automation/components/custom_icon_for_onboarding.dart';
+import 'package:whatsapp_automation/utils/AppColors.dart';
 
 class SecondOnboarding extends StatelessWidget {
   const SecondOnboarding({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Positioned.fill(
-          child: Center(
+    return Container(
+      height: MediaQuery.of(context).size.height,
+      width: MediaQuery.of(context).size.width,
+      padding: EdgeInsets.all(10),
+      margin: EdgeInsets.only(bottom: 40),
+      child: Stack(
+        children: [
+          /* Centered Circle to hold other icons, 
+        => As its the first child inside the Stack it will be placed behind the other icons in the center of the screen*/
+          Center(
             child: Container(
-              margin: EdgeInsets.only(bottom: 70),
-              height: 180,
-              width: 180,
+              height: 200,
+              width: 200,
               decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(100),
+                color: Appcolors.parentBodyBGColor,
+                borderRadius: BorderRadius.circular(200),
                 boxShadow: [
                   BoxShadow(
-                    blurRadius: 60,
-                    spreadRadius: 20,
-                    color: const Color(0xFFD3EBFF),
+                    color: Appcolors.parentBodyBGColor,
+                    offset: Offset(1, 3),
+                    blurRadius: 12,
+                    spreadRadius: 4,
                   ),
                 ],
               ),
+            ),
+          ),
 
-              // Icons in the center of white container to polishing UI.
-              child: Row(
+          // Centered Calender Icon that will hold differen small icons to acheive the UI that is more compact
+          Positioned.fill(
+            child: Center(
+              child: Icon(
+                Icons.calendar_month_sharp,
+                size: 130,
+                color: Appcolors.iconsAndBtnsColor,
+              ),
+            ),
+          ),
+
+          // Chat Icon that is on top of the calender icon in the center of the screen
+          Positioned(
+            right: 55,
+            bottom: 0,
+            top: -114,
+            child: Icon(
+              CupertinoIcons.chat_bubble_2_fill,
+              size: 100,
+              color: Appcolors.iconsAndBtnsColor,
+            ),
+          ),
+
+          // Dollar Currency Icon inside the chat icon to be placed at the right corner of the Calender Icon in the center
+          Positioned(
+            top: -125,
+            bottom: 0,
+            right: 87,
+            child: Icon(
+              Icons.attach_money_outlined,
+              size: 50,
+              color: Appcolors.parentBodyBGColor,
+            ),
+          ),
+
+          // Description and a title at the end of the screen
+          Positioned(
+            bottom: 70,
+            right: 0,
+            left: 0,
+            child: Container(
+              padding: EdgeInsets.all(20),
+              child: Column(
+                spacing: 10,
                 mainAxisAlignment: MainAxisAlignment.center,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Icon(Icons.chevron_right, size: 30, color: Colors.blue),
-                  Text(
-                    "_",
+                  const Text(
+                    "Turn Chats into Bookings",
                     style: TextStyle(
-                      fontSize: 30,
+                      fontFamily: "PoppinsBold",
+                      fontSize: 28,
+                      color: Appcolors.headingTextColor,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  const Text(
+                    "Let customers book appointments directly from WhatsApp chats.",
+                    style: TextStyle(
                       fontFamily: "Poppins",
-                      fontWeight: FontWeight.bold,
-                      color: Colors.blue,
+                      fontSize: 17,
+                      color: Appcolors.bodyTextColor,
                     ),
-                  ),
-                  Icon(Icons.chevron_left, size: 30, color: Colors.blue),
-                ],
-              ),
-            ),
-          ),
-        ),
-
-        // Flash Icon
-        CustomIconForOnboarding(
-          icon: Icons.bolt,
-          icon_horizontal_pos: 50,
-          icon_vertical_pos: 160,
-          size_of_icon: 32,
-          color_of_icon: Colors.blue,
-          height_of_container: 42,
-          width_of_container: 42,
-          color_of_parent_box: Colors.white,
-          border_radius_of_parent: 100,
-          useTop: true,
-          useRight: true,
-        ),
-
-        // Sparkles icon
-        CustomIconForOnboarding(
-          icon: IonIcons.sparkles,
-          icon_horizontal_pos: 60,
-          icon_vertical_pos: 265,
-          size_of_icon: 34,
-          color_of_icon: Colors.blue,
-          height_of_container: 55,
-          width_of_container: 55,
-          color_of_parent_box: Colors.white,
-          border_radius_of_parent: 10,
-          useTop: false,
-          useRight: true,
-        ),
-
-        // Addition Icon
-        CustomIconForOnboarding(
-          icon: Icons.add,
-          icon_horizontal_pos: 70,
-          icon_vertical_pos: 260,
-          size_of_icon: 20,
-          color_of_icon: Colors.blue,
-          height_of_container: 30,
-          width_of_container: 30,
-          color_of_parent_box: Colors.white,
-          border_radius_of_parent: 10,
-          useTop: false,
-          useRight: false,
-        ),
-
-        // Message Icon
-        CustomIconForOnboarding(
-          icon: Icons.chat_bubble_rounded,
-          icon_horizontal_pos: 50,
-          icon_vertical_pos: 160,
-          size_of_icon: 30,
-          color_of_icon: Colors.blue,
-          height_of_container: 50,
-          width_of_container: 50,
-          color_of_parent_box: Colors.white,
-          border_radius_of_parent: 10,
-          useTop: true,
-          useRight: false,
-        ),
-
-        Positioned.fill(
-          child: Align(
-            alignment: Alignment.bottomCenter,
-            child: Padding(
-              padding: const EdgeInsets.only(bottom: 50),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text(
-                    "Smart AI Replies",
                     textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 28, fontWeight: FontWeight.w600),
-                  ),
-                  SizedBox(height: 10),
-                  Text(
-                    "Respond to customers instantly with AI-powered personalized messages",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: const Color(0xFF808080),
-                    ),
                   ),
                 ],
               ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

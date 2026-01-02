@@ -22,7 +22,7 @@ class OnboardingProgressBar extends StatelessWidget {
                 height: 8,
                 width: currentScreenIndex == i ? 30 : 8,
                 decoration: BoxDecoration(
-                  color: currentScreenIndex == i ? Colors.blue : Colors.grey,
+                  color: currentScreenIndex == i ? Color(0xFF003C7B) : Colors.grey,
                   borderRadius: BorderRadius.circular(40),
                 ),
               );
