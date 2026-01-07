@@ -64,7 +64,7 @@ class FirstOnboarding extends StatelessWidget {
               alignment: Alignment.bottomCenter,
               child: Container(
                 padding: EdgeInsets.all(8),
-                width: MediaQuery.of(context).size.width - 40,
+                width: (MediaQuery.of(context).size.width),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   mainAxisSize: MainAxisSize.max,
